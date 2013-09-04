@@ -1,0 +1,98 @@
+						
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-responsive.css">
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/bootstrap-collapse.js"></script>  
+</head>
+
+<body>
+    <!-- Nav Bar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+                <a class="brand" href="#">
+                    <img src="images/clapelogo.png" alt="top logo" title="Home"/>
+                </a>
+                
+            </div>
+        </div>  
+    </div>
+ <!-- Nav Bar --> 
+ 
+ <div class="row-fluid">
+  
+   <div class="container ">
+     
+    		<div class="page-content">
+        	<div class="hero-unit"> <!-- Create the box of fixed size   -->
+   			 <div class="row">  <!-- Middle alignment -->
+ 
+        		<div class="span6">
+            	<h2>Convert CSV to MongoDB</h2>
+            	<p>Demo Testing Website</p>
+       			</div>
+          <div class="span8">
+                <form id="form" name="form" method="post" enctype="multipart/form-data" action="/tstamp" class="form-horizontal">
+            	<div class="control-group" id="path">
+               			 <label for="number" class="control-label pull-right">Complete Path</label>
+      					<div class="controls">
+      					<input name="cpath" type="text" value="" id="cpath" placeholder="Complete Path"> 
+      					<p><span class="text-error" id="errCode"></span></p>
+       					</div>
+       			</div>
+                </form>
+                <div class="control-group pad-bottom text-right pad-right">
+               <button class="btn btn-primary"> Check TimeStamp </button>
+               <a href="/upPage">Update</a>
+               </div>
+          </div>      
+            <h4> <%- msg %></h4>
+                
+            </div>
+   </div>
+    
+</div>
+ 
+<script type="text/javascript">
+$(document).ready(function(e) {
+	
+$('button').click(function(e) {
+				e.preventDefault();
+				validatePath();
+				
+				var eCode=$('#errCode').html();
+				
+				if(eCode=='')
+				{
+					$('form').submit();
+				}
+				else
+					return false;
+				
+			});
+});
+
+function validatePath()
+{
+	if($('#cpath').val()==""){
+		$('#errCode').html("Path can't be empty");
+		$('#path').removeClass('success').addClass('error');
+	}
+	else{
+	$('#errCode').html("");
+		$('#dCode').removeClass('error').addClass('success');
+	}
+}
+</script>
+</body>
+
+</html>
